@@ -1,0 +1,12 @@
+<h2><%= current_user.user_name %></h2><br>
+<h4<%= current_user.name %></h4>
+
+<div class ="user_basics">
+  <ul class="basics">
+
+ <li class="repo>"> Repositories<%= @user.repositories.count%> </li>
+ <li class="followers"> Followers <%= @user.followers.count%> </li>
+ <li class="following"> Following <%= @user.following.count%> </li>
+ <li class="starred"><%= @user.starred.count%> </li>
+ </ul>
+</div>

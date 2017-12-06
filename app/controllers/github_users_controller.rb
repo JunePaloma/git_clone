@@ -1,5 +1,5 @@
 class GithubUsersController < ApplicationController
   def show
-
-  end 
+    @user = User.
+  end
 end
