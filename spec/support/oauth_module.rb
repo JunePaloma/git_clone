@@ -1,5 +1,5 @@
 module OauthModule
-  def mock_auth_hash #move to module in support folder
+  def mock_auth_hash 
     OmniAuth.config.mock_auth[:github] = {
       'info' => {
         'uid' => '26794850',

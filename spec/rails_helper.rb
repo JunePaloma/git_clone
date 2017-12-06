@@ -8,6 +8,13 @@ require 'rspec/rails'
 require_relative './support/oauth_module'
 
 
+VCR.configure do |config|
+  config.cassette_library_dir = "spec/fixtures/cassettes"
+  config.hook_into :webmock
+  config.filter_sensitive_data('<GITHUBCLIENTTOKEN>'){ENV['GITHUB_USER_TEST_TOKEN']}
+end
+
+
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
