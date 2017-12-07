@@ -12,6 +12,8 @@ VCR.configure do |config|
   config.cassette_library_dir = "spec/fixtures/cassettes"
   config.hook_into :webmock
   config.filter_sensitive_data('<GITHUBCLIENTTOKEN>'){ENV['GITHUB_USER_TEST_TOKEN']}
+  config.filter_sensitive_data('<GITHUB_TOKEN>'){ENV['Github_client']}
+  config.filter_sensitive_data('<GITHUB_SECRET>'){ENV['Github_secret']}
 end
 
 
