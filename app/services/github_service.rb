@@ -24,16 +24,13 @@ class GithubService
     end
     followers
   end
-end
 
-class User
-  def initialize(login, url, id, avatar_url)
-    @login = login
-    @url = url
-    @id = id
-    @avatar_url = avatar_url
+  def fetch_following
+    follower_info = @conn.get("/users/#{@current_user.user_name}/following")
+      results = JSON.parse(follower_info.body, symbolize_names: true )
+      following = results.map do |following|
+      User.new(following[:login], following[:url], following[:id], following[:avatar_url])
+    end
+    following
   end
-
-  private
-  attr_reader :login, :url, :id, :avatar_url
 end
