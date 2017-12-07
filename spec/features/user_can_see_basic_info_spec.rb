@@ -10,7 +10,7 @@ describe "As a logged-in user I can" do
 
     expect(page).to have_content("Stars 1")
     expect(page).to have_content("Followers 2")
-    expect(page).to have_content("Following 4")
+    expect(page).to have_content("Following 5")
     expect(page).to have_content("Repositories 36")
     end
   end

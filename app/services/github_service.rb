@@ -33,4 +33,22 @@ class GithubService
     end
     following
   end
+
+  def fetch_starred
+    follower_info = @conn.get("/users/#{@current_user.user_name}/starred")
+      results = JSON.parse(follower_info.body, symbolize_names: true)
+      starred = results.map do |star|
+      Starred.new(star[:name], star[:full_name])
+    end
+    starred
+  end
+end
+
+class Starred
+  def initialize(name, full_name)
+    @name = name
+    @full_name = full_name
+  end
+  private
+  attr_reader :name, :full_name
 end
