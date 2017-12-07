@@ -8,7 +8,7 @@ class GithubService
   end
 
   def fetch_repos
-    repo_info = @conn.get("/users/#{@current_user.user_name}/repos")
+    repo_info = @conn.get("/users/#{@current_user.user_name}/repos?per_page=100")
       results = JSON.parse(repo_info.body, symbolize_names: true )
       repos = results.map do |repo|
       Repo.new(repo[:name], repo[:language], repo[:created_at])
