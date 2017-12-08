@@ -1,9 +1,9 @@
 class GithubService
   def initialize(current_user)
     @current_user = current_user
-    @conn = Faraday.new(url: 'https://api.github.com') do |faraday|
-      faraday.params["access_token"] = "#{current_user.oauth_token}"
-      faraday.adapter Faraday.default_adapter
+    # @conn = Faraday.new(url: 'https://api.github.com') do |faraday|
+    #   faraday.params["access_token"] = "#{current_user.oauth_token}"
+    #   faraday.adapter Faraday.default_adapter
     end
   end
 
@@ -41,5 +41,15 @@ class GithubService
       Starred.new(star[:name], star[:full_name])
     end
     starred
+  end
+
+  private
+  attr_reader: current_user
+
+  def connection
+    @conn = Faraday.new(url: 'https://api.github.com') do |faraday|
+      faraday.params["access_token"] = "#{current_user.oauth_token}"
+      faraday.adapter Faraday.default_adapter
+    end
   end
 end
