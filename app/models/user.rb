@@ -1,8 +1,8 @@
 class User
-  def initialize(login, url, id, avatar_url)
+  def initialize(login, url, uid, avatar_url)
     @login = login
     @url = url
-    @id = id
+    @uid = uid
     @avatar_url = avatar_url
   end
 
